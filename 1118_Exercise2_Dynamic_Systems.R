@@ -89,10 +89,10 @@ LV_sys2 = function(t,np,Parameters) {
 np0 = c(2,1)
 Parameters = list(r=5, a=2, mu=10, K=50)
 timevec = seq(0,20, by=0.1)
-result = ode(y=np0, func=LV_sys, times=timevec, parms=Parameters)
+result = ode(y=np0, func=LV_sys2, times=timevec, parms=Parameters)
 #plot the prey densities in blue
 plot(result[,1], result[,2], type='l', col='blue',
-     xlab = 'time', ylab='density')
+     xlab = 'time', ylab='density', ylim=c(0,10))
 #add the predator densities in red
 lines(result[,1], result[,3], col='red')
 #add legend
