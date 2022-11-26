@@ -67,6 +67,20 @@ Pfixation = function(s, repeats) {
 }
 Pfixation(10,100)
 
+#correct
+Pfixation <- function(N,repeats){
+  tmax <- 10000
+  count <- 0
+  for (i in 1:repeats){
+    Acount <- runMoran(N,tmax)
+    #Count the number of fixations
+    if (Acount==N){
+      count <- count+1
+    }
+  }
+  return(count/repeats)
+}
+
 runMoran2 = function(s, tmax) {
   #create the start population with only single copy of A
   pop = rep("B", s-1)
