@@ -25,8 +25,8 @@ LV_sys = function(t,np,Parameters) {
   return(list(c(dndt, dpdt)))
 }
 np0 = c(2,1)
-Parameters = list(r=10, a=2, mu=10)
-timevec = seq(0,20, by=0.1)
+Parameters = list(r=2, a=1, mu=2)
+timevec = seq(0,10, by=0.1)
 result = ode(y=np0, func=LV_sys, times=timevec, parms=Parameters)
 #plot the prey densities in blue
 plot(result[,1], result[,2], type='l', col='blue',
@@ -86,9 +86,9 @@ LV_sys2 = function(t,np,Parameters) {
   dpdt = Parameters$a*n*p - Parameters$mu*p
   return(list(c(dndt, dpdt)))
 }
-np0 = c(2,1)
-Parameters = list(r=5, a=2, mu=10, K=50)
-timevec = seq(0,20, by=0.1)
+np0 = c(2,2)
+Parameters = list(r=2, a=1, mu=3, K=10)
+timevec = seq(0,10, by=0.1)
 result = ode(y=np0, func=LV_sys2, times=timevec, parms=Parameters)
 #plot the prey densities in blue
 plot(result[,1], result[,2], type='l', col='blue',
@@ -99,7 +99,7 @@ lines(result[,1], result[,3], col='red')
 legend('topright', legend=c('prey', 'predator'), lty='solid', col=c('blue', 'red'), cex=0.6, bty='n')
 #the phase-plane plot
 plot(result[,2], result[,3], type='l',
-     xlab='prey density', ylab='predator density')
+     xlab='prey density', ylab='predator density', xlim = c(0,10), ylim = c(0,2))
 LV_isoclines2(Parameters$r, Parameters$a, Parameters$mu, Parameters$K)
 
 ##2e)
